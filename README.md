@@ -45,7 +45,7 @@ done. It will:
 ### What gets installed
 
 Homebrew packages (see [`Brewfile`](Brewfile)): `rcm`, `oh-my-posh`,
-`zsh-syntax-highlighting`, `fzf`, [`herdr`](https://herdr.dev), `pyenv`, `asdf`,
+`zsh-syntax-highlighting`, `fzf`, [`herdr`](https://herdr.dev), `pyenv`,
 `the_silver_searcher` (`ag`), `universal-ctags`, `git`, `git-lfs`, and a Nerd Font.
 
 Bootstrapped outside Homebrew: oh-my-zsh + `zsh-autosuggestions`, and nvm (`~/.nvm`).
@@ -188,7 +188,7 @@ What's in it?
 Runtime / version management:
 
 * Add trusted binstubs to the `PATH`.
-* Load the ASDF version manager.
+* Lazy-load nvm (`~/.nvm`) and initialize pyenv.
 
 Shell aliases and scripts:
 

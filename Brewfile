@@ -22,9 +22,8 @@ brew "fzf"
 # Terminal session/agent multiplexer — autostarts from zshrc (herdr.dev)
 brew "herdr"
 
-# Version managers used in zshrc / asdfrc
+# Python version manager (init'd in zshrc; node is handled by nvm at ~/.nvm)
 brew "pyenv"
-brew "asdf"
 
 # Used by zsh completions and the git ctags hooks
 brew "the_silver_searcher"   # provides `ag` (zsh/completion/_ag)

@@ -239,7 +239,7 @@
     </p>
 
     <div class="stats">
-      <div class="stat"><div class="n">12</div><div class="k">brew installs</div></div>
+      <div class="stat"><div class="n">11</div><div class="k">brew installs</div></div>
       <div class="stat"><div class="n">10</div><div class="k">git commands in bin/</div></div>
       <div class="stat"><div class="n">7</div><div class="k">git aliases</div></div>
       <div class="stat"><div class="n">8</div><div class="k">git hooks templated</div></div>
@@ -267,7 +267,7 @@
   <!-- ═══════════════ 02 BREWFILE ═══════════════ -->
   <section class="reveal">
     <div class="sec-head"><span class="no">02</span><h2>What <em>brew</em> brings in</h2></div>
-    <p class="sec-sub">Eleven formulae, one cask — everything the shell stack expects.</p>
+    <p class="sec-sub">Ten formulae, one cask — everything the shell stack expects.</p>
     <div class="grid">
       <div class="card span6">
         <h3>Shell &amp; terminal <span class="file">Brewfile</span></h3>
@@ -286,7 +286,6 @@
           <span class="chip">git</span>
           <span class="chip">git-lfs<small>filter wired in gitconfig</small></span>
           <span class="chip">pyenv</span>
-          <span class="chip">asdf<small>+ legacy version files</small></span>
           <span class="chip">the_silver_searcher<small>ag</small></span>
           <span class="chip">universal-ctags<small>feeds git hooks</small></span>
         </div>
@@ -308,7 +307,7 @@
           <div class="row"><span class="src">git_template/</span><span class="arrow">→</span><span class="dst">~/.git_template/</span></div>
           <div class="row"><span class="src">bin/</span><span class="arrow">→</span><span class="dst">~/.bin/ <span class="why" style="display:inline;padding:0">(first on PATH)</span></span></div>
           <div class="row"><span class="src">config/herdr/config.toml</span><span class="arrow">→</span><span class="dst">~/.config/herdr/config.toml</span></div>
-          <div class="row"><span class="src">psqlrc · asdfrc · hushlogin · ctags</span><span class="arrow">→</span><span class="dst">~/.psqlrc · ~/.asdfrc · ~/.hushlogin · ~/.ctags</span></div>
+          <div class="row"><span class="src">psqlrc · hushlogin · ctags</span><span class="arrow">→</span><span class="dst">~/.psqlrc · ~/.hushlogin · ~/.ctags</span></div>
         </div>
       </div>
       <div class="card span5">
@@ -346,7 +345,7 @@
           <tr><td class="cmd">prompt</td><td class="desc">oh-my-posh, powerlevel10k_rainbow theme</td></tr>
           <tr><td class="cmd">nvm</td><td class="desc">lazy-loaded — nvm/node/npm/npx are stubs until first use, keeping startup fast</td></tr>
           <tr><td class="cmd">pyenv</td><td class="desc">eval'd init when present</td></tr>
-          <tr><td class="cmd">asdf · cargo</td><td class="desc">sourced from home-dir installs; asdf reads legacy version files (.nvmrc etc.)</td></tr>
+          <tr><td class="cmd">cargo</td><td class="desc">Rust env sourced from ~/.cargo/env when present</td></tr>
           <tr><td class="cmd">herdr</td><td class="desc">autostarts on interactive TTY shells — the tmux replacement (section 05)</td></tr>
         </table>
         <div class="note">Functions: <code>g</code> (bare = git status), <code>mcd</code>, <code>envup</code> (.env → shell), <code>change-extension</code>. Aliases: <code>ll</code>, verbose <code>ln</code>, <code>mkdir -p</code>, <code>e</code>/<code>v</code>, <code>path</code> pretty-printer, <code>zshconfig</code>, <code>ohmyzsh</code>.</div>
@@ -457,8 +456,8 @@
         <p style="color:var(--dim);font-size:13px">Custom Elixir tag definitions (modules, macros, protocols, tests) and JS constants; excludes node_modules / vendor. Feeds the git hook indexer.</p>
       </div>
       <div class="card span4">
-        <h3>Quiet things <span class="file">hushlogin · asdfrc</span></h3>
-        <p style="color:var(--dim);font-size:13px"><code>.hushlogin</code> silences the macOS "Last login" banner. <code>.asdfrc</code> lets asdf read legacy version files like <code>.nvmrc</code>.</p>
+        <h3>Quiet things <span class="file">hushlogin</span></h3>
+        <p style="color:var(--dim);font-size:13px"><code>.hushlogin</code> silences the macOS "Last login" banner.</p>
       </div>
       <div class="card span12">
         <h3>The override layer <span class="file">~/dotfiles-local</span></h3>
