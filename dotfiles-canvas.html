@@ -176,7 +176,7 @@
   .keys-row:last-child { border-bottom: none; }
   .keys-row .what { color: var(--dim); font-size: 13px; margin-left: auto; text-align: right; }
   kbd {
-    font-family: var(--mono); font-size: 12px; color: var(--text);
+    font-family: var(--mono); font-size: 13px; font-weight: 500; color: var(--text);
     background: linear-gradient(180deg, #232a37, #161b24);
     border: 1px solid #303a4d; border-bottom-width: 3px; border-radius: 5px;
     padding: 3px 9px; min-width: 26px; text-align: center; display: inline-block;
@@ -342,12 +342,12 @@
       <div class="card span6">
         <h3>Plugins &amp; engines <span class="file">zshrc</span></h3>
         <table>
-          <tr><td class="cmd">oh-my-zsh</td><td class="desc">git · z · github · history · macos · npm · lol · zsh-autosuggestions (+ syntax-highlighting sourced from brew)</td></tr>
+          <tr><td class="cmd">oh-my-zsh</td><td class="desc">git · z · github · history · npm · lol · zsh-autosuggestions (+ macos on Darwin; syntax-highlighting via brew or distro paths)</td></tr>
           <tr><td class="cmd">prompt</td><td class="desc">oh-my-posh, powerlevel10k_rainbow theme</td></tr>
           <tr><td class="cmd">nvm</td><td class="desc">lazy-loaded — nvm/node/npm/npx are stubs until first use, keeping startup fast</td></tr>
           <tr><td class="cmd">pyenv</td><td class="desc">eval'd init when present</td></tr>
           <tr><td class="cmd">asdf · cargo</td><td class="desc">sourced from home-dir installs; asdf reads legacy version files (.nvmrc etc.)</td></tr>
-          <tr><td class="cmd">herdr</td><td class="desc">autostarts on interactive TTY shells — the tmux replacement (section 06)</td></tr>
+          <tr><td class="cmd">herdr</td><td class="desc">autostarts on interactive TTY shells — the tmux replacement (section 05)</td></tr>
         </table>
         <div class="note">Functions: <code>g</code> (bare = git status), <code>mcd</code>, <code>envup</code> (.env → shell), <code>change-extension</code>. Aliases: <code>ll</code>, verbose <code>ln</code>, <code>mkdir -p</code>, <code>e</code>/<code>v</code>, <code>path</code> pretty-printer, <code>zshconfig</code>, <code>ohmyzsh</code>.</div>
       </div>
@@ -374,8 +374,8 @@
       </div>
       <div class="card span4">
         <h3>Workspaces &amp; tabs</h3>
-        <div class="keys-row"><kbd class="pfx">pfx</kbd><span class="plus">+</span><kbd>⇧↑</kbd><span class="plus">/</span><kbd>⇧↓</kbd><span class="what">prev / next workspace</span></div>
-        <div class="keys-row"><kbd class="pfx">pfx</kbd><span class="plus">+</span><kbd>⇧←</kbd><span class="plus">/</span><kbd>⇧→</kbd><span class="what">prev / next tab</span></div>
+        <div class="keys-row"><kbd class="pfx">pfx</kbd><span class="plus">+</span><kbd>shift+↑</kbd><span class="plus">/</span><kbd>shift+↓</kbd><span class="what">prev / next workspace</span></div>
+        <div class="keys-row"><kbd class="pfx">pfx</kbd><span class="plus">+</span><kbd>shift+←</kbd><span class="plus">/</span><kbd>shift+→</kbd><span class="what">prev / next tab</span></div>
         <div class="note" style="margin-top:18px">herdr runs its stock theme — restyle it per machine via <code>[theme.custom]</code> in the config.</div>
       </div>
     </div>
