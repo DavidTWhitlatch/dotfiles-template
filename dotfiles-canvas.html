@@ -313,7 +313,7 @@
       <div class="card span5">
         <h3>Rules <span class="file">rcrc + hooks/post-up</span></h3>
         <ul class="plain">
-          <li><b>Excluded from linking:</b> README*, LICENSE, install.sh, Brewfile, CODE_OF_CONDUCT.md</li>
+          <li><b>Excluded from linking:</b> README*, LICENSE, install.sh, Brewfile, CODE_OF_CONDUCT.md, this canvas</li>
           <li><b>Copied, not linked:</b> <code>git_template/HEAD</code></li>
           <li><b>post-up hook:</b> touches <code>~/.psqlrc.local</code> so psql never errors on a missing include</li>
           <li><b>post-up hook:</b> warns if a legacy <code>/etc/zshenv</code> will scramble PATH ordering</li>
@@ -460,7 +460,7 @@
           <tr><td class="cmd">git trust-bin / ctags</td><td class="desc">mark a repo's bin/ trusted for PATH · force a tags rebuild</td></tr>
           <tr><td class="cmd">replace foo bar **/*.rb</td><td class="desc">project-wide find &amp; replace via rg/ag + sed</td></tr>
         </table>
-        <div class="note"><code>bin/tat</code> (tmux-attach-by-directory) ships disabled — superseded by herdr.</div>
+        <div class="note">All scripts live on PATH via <code>~/.bin</code>, so they work as native <code>git</code> subcommands.</div>
       </div>
     </div>
   </section>
@@ -489,7 +489,7 @@
   </section>
 
   <footer>
-    <span><b>DOTFILES(7)</b> · generated 2026-06-11 from the live repo</span>
+    <span><b>DOTFILES(7)</b> · a visual inventory of everything this repo sets up</span>
     <span>lineage: <b>thoughtbot/dotfiles</b>, heavily customized · tmux replaced by herdr</span>
   </footer>
 </div>
