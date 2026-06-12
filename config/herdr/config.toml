@@ -1,0 +1,39 @@
+[ui.toast]
+delivery = "herdr"
+
+[ui]
+show_agent_labels_on_pane_borders = true
+
+[keys]
+# Match the old tmux prefix (was: set -g prefix C-a)
+prefix = "ctrl+a"
+
+# Pane focus on prefix+arrows (all four directions). These carry the `prefix+`
+# modifier — a bare arrow binding would be DIRECT (always-on) and steal arrows
+# from the shell/TUIs. Navigate mode's built-in h/j/k/l still work after the
+# prefix as a fallback.
+focus_pane_left = "prefix+left"
+focus_pane_down = "prefix+down"
+focus_pane_up = "prefix+up"
+focus_pane_right = "prefix+right"
+
+# Workspace list navigation on prefix+shift+up/down (unset by default upstream).
+previous_workspace = "prefix+shift+up"
+next_workspace = "prefix+shift+down"
+
+# Tab cycling on prefix+shift+left/right. NOTE: replaces the default
+# previous_tab = prefix+p / next_tab = prefix+n.
+previous_tab = "prefix+shift+left"
+next_tab = "prefix+shift+right"
+
+# Vim splits. herdr's split_vertical = side-by-side, split_horizontal = stacked.
+# Matches tmux defaults: prefix-% = side-by-side, prefix-" = stacked.
+# These MUST carry the `prefix+` modifier: a bare "%"/"\""/"x"/"f" is a DIRECT
+# (always-on) binding that would intercept those characters from the shell.
+#   tmux `bind % split-window -h` (side-by-side) -> split_vertical
+#   tmux `bind '"' split-window -v` (stacked)    -> split_horizontal
+split_vertical = "prefix+%"
+split_horizontal = "prefix+\""
+
+close_pane = "prefix+x"
+zoom = "prefix+f"

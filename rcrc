@@ -1,0 +1,3 @@
+EXCLUDES="README*.md LICENSE install.sh Brewfile CODE_OF_CONDUCT.md dotfiles-canvas.html"
+DOTFILES_DIRS="$HOME/dotfiles-local $HOME/dotfiles"
+COPY_ALWAYS="git_template/HEAD"
