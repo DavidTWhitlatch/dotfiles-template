@@ -150,6 +150,8 @@ What's in it?
 * tmux-style keymap: `Ctrl+a` prefix, `prefix+arrows` to focus panes,
   `prefix+%` / `prefix+"` splits, `prefix+x` close, `prefix+f` zoom,
   `prefix+shift+arrows` for workspace and tab cycling.
+* Printable cheat sheet: [`config/herdr/cheatsheet.html`](config/herdr/cheatsheet.html)
+  (rcup links it to `~/.config/herdr/cheatsheet.html`).
 
 [git](http://git-scm.com/) configuration:
 

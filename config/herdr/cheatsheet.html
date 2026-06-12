@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>herdr — quick keys cheat sheet</title>
+<style>
+  /* Palette: catppuccin mocha — matches herdr's stock default theme */
+  :root {
+    --panel-bg:    #181825;
+    --surface-dim: #11111b;
+    --surface0:    #313244;
+    --surface1:    #45475a;
+    --overlay0:    #6c7086;
+    --overlay1:    #7f849c;
+    --text:        #cdd6f4;
+    --subtext0:    #a6adc8;
+    --accent:      #cba6f7;
+    --mauve:       #b4befe;
+    --green:       #a6e3a1;
+    --yellow:      #f9e2af;
+    --red:         #f38ba8;
+    --blue:        #89b4fa;
+    --teal:        #94e2d5;
+    --peach:       #fab387;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--surface-dim);
+    color: var(--text);
+    font-family: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+    padding: 2.5rem 2rem 4rem;
+    min-height: 100vh;
+    background-image: radial-gradient(ellipse 80% 50% at 50% -10%, #31324455, transparent);
+  }
+  .wrap { max-width: 1180px; margin: 0 auto; }
+
+  header { margin-bottom: 2rem; }
+  h1 {
+    font-size: 1.9rem; font-weight: 700; letter-spacing: -0.02em;
+    color: var(--accent);
+  }
+  .sub { color: var(--subtext0); margin-top: .4rem; font-size: .92rem; }
+  .sub code { color: var(--peach); }
+
+  .prefix-banner {
+    margin-top: 1.2rem;
+    display: inline-flex; align-items: center; gap: .8rem;
+    background: var(--surface0);
+    border: 1px solid var(--surface1);
+    border-left: 4px solid var(--accent);
+    border-radius: 10px;
+    padding: .7rem 1.1rem;
+    font-size: .95rem;
+  }
+  .prefix-banner strong { color: var(--accent); }
+
+  kbd {
+    display: inline-block;
+    background: var(--surface1);
+    border: 1px solid var(--overlay0);
+    border-bottom-width: 2px;
+    border-radius: 6px;
+    padding: .12rem .45rem;
+    font-family: inherit;
+    font-size: .82rem;
+    color: var(--text);
+    white-space: nowrap;
+    box-shadow: 0 1px 0 #00000055;
+  }
+  kbd.pfx { background: #2b2440; border-color: var(--accent); color: var(--accent); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    gap: 1.1rem;
+  }
+  .card {
+    background: var(--panel-bg);
+    border: 1px solid var(--surface1);
+    border-radius: 12px;
+    padding: 1.1rem 1.2rem 1rem;
+    break-inside: avoid;
+  }
+  .card h2 {
+    font-size: .8rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: .12em;
+    margin-bottom: .8rem;
+    display: flex; align-items: center; gap: .5rem;
+  }
+  .card h2::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: currentColor; }
+  .c-panes    h2 { color: var(--accent); }
+  .c-tabs     h2 { color: var(--blue); }
+  .c-ws       h2 { color: var(--mauve); }
+  .c-session  h2 { color: var(--teal); }
+  .c-cli      h2 { color: var(--green); }
+  .c-diff     h2 { color: var(--yellow); }
+
+  table { width: 100%; border-collapse: collapse; }
+  td { padding: .34rem 0; font-size: .88rem; vertical-align: top; }
+  tr + tr td { border-top: 1px solid #31324466; }
+  td.keys { white-space: nowrap; padding-right: 1rem; width: 1%; }
+  td.what { color: var(--subtext0); }
+  td.what b { color: var(--text); font-weight: 600; }
+
+  .pill {
+    display: inline-block; margin-left: .45rem;
+    font-size: .62rem; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase;
+    border-radius: 999px; padding: .08rem .45rem;
+    vertical-align: 2px;
+  }
+  .pill.custom { background: #cba6f722; color: var(--accent); border: 1px solid #cba6f755; }
+  .pill.tmux   { background: #a6e3a11f; color: var(--green);  border: 1px solid #a6e3a150; }
+
+  .note { font-size: .78rem; color: var(--overlay1); margin-top: .7rem; line-height: 1.45; }
+  .note code { color: var(--subtext0); }
+
+  pre {
+    background: var(--surface0);
+    border: 1px solid var(--surface1);
+    border-radius: 8px;
+    padding: .6rem .8rem;
+    font-size: .8rem;
+    color: var(--text);
+    overflow-x: auto;
+    line-height: 1.55;
+  }
+  pre .cmt { color: var(--overlay1); }
+
+  footer {
+    margin-top: 2.2rem; font-size: .78rem; color: var(--overlay0);
+    border-top: 1px solid var(--surface0); padding-top: 1rem;
+  }
+  footer code { color: var(--overlay1); }
+
+  @media print {
+    body { background: #fff; color: #222; padding: .5rem; }
+    .card { border-color: #ccc; background: #fff; }
+    kbd { background: #f3f3f3; border-color: #bbb; color: #222; box-shadow: none; }
+    td.what, .sub, .note { color: #555; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>herdr quick keys</h1>
+  <div class="sub">herdr 0.6.8 · stock theme · config: <code>~/.config/herdr/config.toml</code> · effective bindings (this repo's overrides + shipped defaults)</div>
+  <div class="prefix-banner">
+    Prefix is <kbd class="pfx">ctrl + a</kbd> <span style="color:var(--subtext0)">— tmux's classic prefix. Every <kbd class="pfx">⌐</kbd>-marked key below means: tap <strong>ctrl+a</strong> first, release, then the key.</span>
+  </div>
+</header>
+
+<div class="grid">
+
+  <div class="card c-panes">
+    <h2>Panes</h2>
+    <table>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>%</kbd></td><td class="what"><b>Split side-by-side</b> (vertical)<span class="pill tmux">tmux</span><span class="pill custom">custom</span></td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>"</kbd></td><td class="what"><b>Split stacked</b> (horizontal)<span class="pill tmux">tmux</span><span class="pill custom">custom</span></td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>←</kbd><kbd>↓</kbd><kbd>↑</kbd><kbd>→</kbd></td><td class="what"><b>Focus pane</b> left / down / up / right<span class="pill custom">custom</span> (<code>h/j/k/l</code> still work)</td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>tab</kbd></td><td class="what"><b>Cycle to next pane</b></td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>shift+tab</kbd></td><td class="what"><b>Cycle to previous pane</b></td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>f</kbd></td><td class="what"><b>Zoom / fullscreen toggle</b><span class="pill custom">custom</span> (default was <code>z</code>)</td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>x</kbd></td><td class="what"><b>Close pane</b></td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>r</kbd></td><td class="what"><b>Resize mode</b> (then h/j/k/l or arrows; esc to exit)</td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>shift+p</kbd></td><td class="what"><b>Rename pane</b></td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>e</kbd></td><td class="what"><b>Edit scrollback</b> in $EDITOR</td></tr>
+    </table>
+    <div class="note">Bare <code>h/j/k/l</code> are deliberately <em>not</em> bound directly (they'd be swallowed from the shell) — pane focus always goes through the prefix.</div>
+  </div>
+
+  <div class="card c-tabs">
+    <h2>Tabs</h2>
+    <table>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>c</kbd></td><td class="what"><b>New tab</b> (prompts for a name)</td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>shift+←</kbd> / <kbd>shift+→</kbd></td><td class="what"><b>Previous / next tab</b><span class="pill custom">custom</span> (replaces <code>p</code>/<code>n</code>)</td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>1</kbd>…<kbd>9</kbd></td><td class="what"><b>Jump to tab 1–9</b></td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>shift+t</kbd></td><td class="what"><b>Rename tab</b></td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>shift+x</kbd></td><td class="what"><b>Close tab</b></td></tr>
+    </table>
+  </div>
+
+  <div class="card c-ws">
+    <h2>Workspaces &amp; worktrees</h2>
+    <table>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>shift+↑</kbd> / <kbd>shift+↓</kbd></td><td class="what"><b>Previous / next workspace</b><span class="pill custom">custom</span></td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>w</kbd></td><td class="what"><b>Workspace picker</b></td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>shift+n</kbd></td><td class="what"><b>New workspace</b></td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>shift+w</kbd></td><td class="what"><b>Rename workspace</b></td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>shift+d</kbd></td><td class="what"><b>Close workspace</b> (asks to confirm)</td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>shift+g</kbd></td><td class="what"><b>New git worktree</b> workspace</td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>b</kbd></td><td class="what"><b>Toggle sidebar</b></td></tr>
+    </table>
+  </div>
+
+  <div class="card c-session">
+    <h2>Session &amp; app</h2>
+    <table>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>?</kbd></td><td class="what"><b>Help</b> — live list of all bindings</td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>g</kbd></td><td class="what"><b>Go-to navigator</b> — jump anywhere by name</td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>s</kbd></td><td class="what"><b>Settings</b></td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>q</kbd></td><td class="what"><b>Detach client</b> (server + panes keep running)</td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>shift+r</kbd></td><td class="what"><b>Reload</b> <code>config.toml</code></td></tr>
+      <tr><td class="keys"><kbd class="pfx">⌐</kbd> <kbd>o</kbd></td><td class="what"><b>Open notification target</b> — jump to the pane that pinged</td></tr>
+    </table>
+    <div class="note">Mouse: click to focus, wheel scrolls 3 lines/notch. Toasts are delivered in-app (<code>ui.toast = "herdr"</code>), agent labels show on pane borders.</div>
+  </div>
+
+  <div class="card c-cli">
+    <h2>CLI essentials</h2>
+    <pre>herdr                     <span class="cmt"># attach / launch session</span>
+herdr status              <span class="cmt"># client + server health</span>
+herdr server reload-config
+herdr server stop
+herdr config reset-keys   <span class="cmt"># back up + clear key overrides</span>
+herdr update              <span class="cmt"># stay current (stable channel)</span></pre>
+    <div class="note">Logs: <code>~/.config/herdr/herdr-{client,server}.log</code>. Socket API auto-starts the server.</div>
+  </div>
+
+  <div class="card c-diff">
+    <h2>Where this config differs from stock herdr</h2>
+    <table>
+      <tr><td class="keys"><kbd>prefix</kbd></td><td class="what"><b>ctrl+a</b> — stock is <code>ctrl+b</code> (kept from tmux)</td></tr>
+      <tr><td class="keys"><kbd>split</kbd></td><td class="what"><b>% / "</b> — stock is <code>v</code> / <code>minus</code></td></tr>
+      <tr><td class="keys"><kbd>zoom</kbd></td><td class="what"><b>prefix+f</b> — stock is <code>prefix+z</code></td></tr>
+      <tr><td class="keys"><kbd>panes</kbd></td><td class="what"><b>prefix+arrows</b> — stock is <code>prefix+h/j/k/l</code> only</td></tr>
+      <tr><td class="keys"><kbd>ws / tabs</kbd></td><td class="what"><b>prefix+shift+↑↓</b> workspaces, <b>prefix+shift+←→</b> tabs — stock has no workspace cycling; tabs were <code>p</code>/<code>n</code></td></tr>
+    </table>
+    <div class="note">Theme and everything else on this sheet is a shipped default — if a key doesn't fire, <kbd class="pfx">⌐</kbd> <kbd>?</kbd> shows what your running server actually has loaded.</div>
+  </div>
+
+</div>
+
+<footer>
+  Generated from this repo's <code>config/herdr/config.toml</code> + <code>herdr --default-config</code> (v0.6.8). ⌐ = prefix (<code>ctrl+a</code>). Shell line editing is stock zsh emacs keymap (<code>bindkey -e</code>) — no custom shell bindings to memorize.
+</footer>
+
+</div>
+</body>
+</html>
