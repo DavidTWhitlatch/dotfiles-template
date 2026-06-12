@@ -1,19 +1,24 @@
 dotfiles
 ========
 
-A batteries-included macOS shell setup: zsh + oh-my-zsh, an oh-my-posh prompt,
-[herdr](https://herdr.dev) as the terminal multiplexer, git superpowers
-(template hooks, ctags indexing, branch-lifecycle commands), and a clean
-override layer for personal customization. Based on
+A batteries-included shell setup for macOS and Linux: zsh + oh-my-zsh, an
+oh-my-posh prompt, [herdr](https://herdr.dev) as the terminal multiplexer,
+git superpowers (template hooks, ctags indexing, branch-lifecycle commands),
+and a clean override layer for personal customization. Based on
 [thoughtbot/dotfiles](https://github.com/thoughtbot/dotfiles).
 
 Install
 -------
 
-On a fresh macOS machine, clone the repo and run the bootstrap script:
+On a fresh machine, clone the repo and run the bootstrap script:
 
     git clone https://github.com/DavidTWhitlatch/dotfiles-template.git ~/dotfiles
     ~/dotfiles/install.sh
+
+On Linux, install Homebrew's prerequisites first (Debian/Ubuntu shown;
+use your distro's equivalent):
+
+    sudo apt-get install -y build-essential procps curl file git zsh
 
 Then set your git identity in `~/.gitconfig.local` (the repo's `gitconfig`
 deliberately ships without one):
@@ -33,6 +38,9 @@ done. It will:
 4. Set `zsh` as your login shell.
 5. Symlink every dotfile into `$HOME` with [rcm](https://github.com/thoughtbot/rcm)
    (`env RCRC=$HOME/dotfiles/rcrc rcup`).
+6. Seed a git credential helper into `~/.gitconfig.local` — `osxkeychain` on
+   macOS automatically; on Linux it prints a reminder to pick one
+   (`libsecret`, `store`, or `cache`).
 
 ### What gets installed
 
@@ -45,6 +53,18 @@ Bootstrapped outside Homebrew: oh-my-zsh + `zsh-autosuggestions`, and nvm (`~/.n
 Everything the zsh configs reference is installed by the script — machine-specific
 tools (extra CLIs, editors, runtimes) belong in the `~/dotfiles-local` override
 layer, e.g. `~/dotfiles-local/zshrc.local`.
+
+### Linux notes
+
+Supported: mainstream glibc distros (Ubuntu, Debian, Fedora, Arch) on
+x86_64 or arm64, including WSL2 — that's what Homebrew-on-Linux and herdr's
+prebuilt bottles cover. Two manual steps remain:
+
+* **Nerd Font** — the macOS cask can't run on Linux. Download
+  [Meslo LG Nerd Font](https://www.nerdfonts.com), unzip into
+  `~/.local/share/fonts`, run `fc-cache -f`, and select it in your terminal.
+* **Git credential helper** — set your preference in `~/.gitconfig.local`,
+  e.g. `git config --file ~/.gitconfig.local credential.helper libsecret`.
 
 ### Manual install (without the script)
 

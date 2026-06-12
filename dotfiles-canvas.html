@@ -253,14 +253,15 @@
     <div class="sec-head"><span class="no">01</span><h2>The <em>boot sequence</em></h2></div>
     <p class="sec-sub"><code>install.sh</code> — idempotent, safe to re-run; every step skips itself if already done. Installers are told to keep their hands off your rc files so the rcm symlinks never get clobbered.</p>
     <div class="chain">
-      <div class="step"><h3><span class="tag">1</span>Homebrew</h3><p>Installed if missing; handles both Apple Silicon and Intel prefixes.</p></div>
+      <div class="step"><h3><span class="tag">1</span>Homebrew</h3><p>Installed if missing; handles Apple Silicon, Intel, and Linuxbrew prefixes.</p></div>
       <div class="step"><h3><span class="tag">2</span>brew bundle</h3><p>Every package in the <code>Brewfile</code> (section 02), plus the <code>thoughtbot/formulae</code> tap.</p></div>
       <div class="step"><h3><span class="tag">3</span>fzf key bindings</h3><p>Writes <code>~/.fzf.zsh</code> — Ctrl-R history search and Ctrl-T file finder, sourced by zshrc.</p></div>
       <div class="step"><h3><span class="tag">4</span>oh-my-zsh</h3><p>Installed with <code>KEEP_ZSHRC=yes</code> so it never touches the managed <code>~/.zshrc</code>.</p></div>
       <div class="step"><h3><span class="tag">5</span>zsh-autosuggestions</h3><p>Cloned into oh-my-zsh custom plugins; activated by the forge block in zshrc.</p></div>
       <div class="step"><h3><span class="tag">6</span>nvm → <code>~/.nvm</code></h3><p>Official installer with <code>PROFILE=/dev/null</code> — no rc-file graffiti. Lazy-loaded later (section 04).</p></div>
       <div class="step"><h3><span class="tag">7</span>chsh → zsh</h3><p>zsh becomes the login shell (added to <code>/etc/shells</code> if needed).</p></div>
-      <div class="step"><h3><span class="tag">8</span>rcup symlinks</h3><p><code>env RCRC=$HOME/dotfiles/rcrc rcup</code> — every dotfile linked into <code>$HOME</code> (section 03).</p></div>    </div>
+      <div class="step"><h3><span class="tag">8</span>rcup symlinks</h3><p><code>env RCRC=$HOME/dotfiles/rcrc rcup</code> — every dotfile linked into <code>$HOME</code> (section 03).</p></div>
+      <div class="step"><h3><span class="tag">9</span>git credential helper</h3><p>Seeded into <code>~/.gitconfig.local</code> — keychain on macOS; on Linux you pick one (libsecret / store / cache).</p></div>    </div>
   </section>
 
   <!-- ═══════════════ 02 BREWFILE ═══════════════ -->
@@ -390,7 +391,7 @@
         <table>
           <tr><td class="cmd">identity</td><td class="desc">yours to set — lives in <code>~/.gitconfig.local</code>, included by the shipped gitconfig</td></tr>
           <tr><td class="cmd">defaults</td><td class="desc">init.defaultBranch=main · push.default=current · merge.ff=only · fetch.prune · rebase.autosquash</td></tr>
-          <tr><td class="cmd">editor</td><td class="desc">defers to $EDITOR · diff.colorMoved=zebra · credentials in macOS keychain · git-lfs filter</td></tr>
+          <tr><td class="cmd">editor</td><td class="desc">defers to $EDITOR · diff.colorMoved=zebra · credential helper seeded per-OS into ~/.gitconfig.local · git-lfs filter</td></tr>
           <tr><td class="cmd">templates</td><td class="desc">commit message = 50/72 prompt sheet (<code>~/.gitmessage</code>) · global ignore for .DS_Store, node_modules, .env, logs, tags…</td></tr>
         </table>
       </div>

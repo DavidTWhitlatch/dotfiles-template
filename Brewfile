@@ -34,5 +34,6 @@ brew "universal-ctags"       # git_template ctags hooks
 brew "git"
 brew "git-lfs"
 
-# Nerd Font for oh-my-posh glyphs.
-cask "font-meslo-lg-nerd-font"
+# Nerd Font for oh-my-posh glyphs. Casks are macOS-only; on Linux install
+# "Meslo LG Nerd Font" into ~/.local/share/fonts and run fc-cache -f.
+cask "font-meslo-lg-nerd-font" if OS.mac?

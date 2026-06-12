@@ -32,8 +32,8 @@
   path = ~/.gitconfig.local
 [diff]
   colorMoved = zebra
-[credential]
-	helper = osxkeychain
+# credential.helper is per-OS — install.sh seeds it into ~/.gitconfig.local
+# (osxkeychain on macOS; pick libsecret/store/cache yourself on Linux)
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true

@@ -1,9 +1,12 @@
 #!/usr/bin/env bash
 #
-# Bootstrap this dotfiles repo on a fresh macOS machine.
+# Bootstrap this dotfiles repo on a fresh macOS or Linux machine.
 #
 #   git clone https://github.com/DavidTWhitlatch/dotfiles-template.git ~/dotfiles
 #   ~/dotfiles/install.sh
+#
+# Linux: install Homebrew's prerequisites first, e.g. on Debian/Ubuntu:
+#   sudo apt-get install -y build-essential procps curl file git zsh
 #
 # Idempotent: safe to re-run. Each step is skipped if already done.
 # Installers are told NOT to edit your shell rc files, so the rcm-managed
@@ -21,9 +24,10 @@ if ! have brew; then
   log "Installing Homebrew"
   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
-# Put brew on PATH for this script (Apple Silicon vs Intel prefixes differ)
+# Put brew on PATH for this script (Apple Silicon / Intel / Linuxbrew prefixes)
 if   [ -x /opt/homebrew/bin/brew ]; then eval "$(/opt/homebrew/bin/brew shellenv)"
 elif [ -x /usr/local/bin/brew ];   then eval "$(/usr/local/bin/brew shellenv)"
+elif [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
 # 2. Homebrew packages ------------------------------------------------------
@@ -62,7 +66,12 @@ fi
 
 # 7. Make zsh the login shell ----------------------------------------------
 ZSH_BIN="$(command -v zsh)"
-if [ "$(dscl . -read "/Users/$USER" UserShell 2>/dev/null | awk '{print $2}')" != "$ZSH_BIN" ]; then
+if [ "$(uname -s)" = "Darwin" ]; then
+  CURRENT_SHELL="$(dscl . -read "/Users/$USER" UserShell 2>/dev/null | awk '{print $2}')"
+else
+  CURRENT_SHELL="$(getent passwd "$USER" | cut -d: -f7)"
+fi
+if [ "$CURRENT_SHELL" != "$ZSH_BIN" ]; then
   log "Setting zsh as your login shell"
   grep -qx "$ZSH_BIN" /etc/shells || echo "$ZSH_BIN" | sudo tee -a /etc/shells >/dev/null
   chsh -s "$ZSH_BIN" || echo "    (chsh failed — change your login shell to zsh manually)"
@@ -72,4 +81,26 @@ fi
 log "Linking dotfiles with rcup"
 env RCRC="$DOTFILES/rcrc" rcup -v
 
+# 9. Git credential helper (per-OS; lives in ~/.gitconfig.local) -------------
+if ! git config --file "$HOME/.gitconfig.local" credential.helper >/dev/null 2>&1; then
+  if [ "$(uname -s)" = "Darwin" ]; then
+    log "Setting git credential.helper=osxkeychain in ~/.gitconfig.local"
+    git config --file "$HOME/.gitconfig.local" credential.helper osxkeychain
+  else
+    echo "    note: set a git credential helper in ~/.gitconfig.local," >&2
+    echo "    e.g. git config --file ~/.gitconfig.local credential.helper libsecret" >&2
+  fi
+fi
+
 log "Done — open a new terminal, or run: exec zsh"
+
+if [ "$(uname -s)" != "Darwin" ]; then
+  cat <<'NOTE'
+
+Linux notes:
+  • Nerd Font (oh-my-posh glyphs): download "Meslo LG Nerd Font" from
+    https://www.nerdfonts.com, unzip into ~/.local/share/fonts, run fc-cache -f,
+    then select it in your terminal. (The macOS cask can't run here.)
+  • Git credential helper: see the note above if one isn't configured yet.
+NOTE
+fi

@@ -1,0 +1,127 @@
+{
+  "/Users/zero/dotfiles-template/install.sh": {
+    "mtime": 1781231536.1367111,
+    "ast_hash": "991340b5f83f1b4317a8e18d98c8b5ba",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/git_template/hooks/ctags": {
+    "mtime": 1781231161.0,
+    "ast_hash": "663f431bee6c29cb8bd1f15a7d0e2b36",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/git_template/hooks/post-commit": {
+    "mtime": 1781231301.524738,
+    "ast_hash": "efaa053e25c7d9df404e24a26fccf22f",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/git_template/hooks/prepare-commit-msg": {
+    "mtime": 1781231161.0,
+    "ast_hash": "e2bd00d0a233ba3b932bf69fa7dec4f2",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/git_template/hooks/post-checkout": {
+    "mtime": 1781231302.8631902,
+    "ast_hash": "42e8c3bddb014f5adbad46230d58b5f5",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/git_template/hooks/post-rewrite": {
+    "mtime": 1781231161.0,
+    "ast_hash": "b4b7ae8784a14785717463dea4ee9135",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/git_template/hooks/commit-msg": {
+    "mtime": 1781231161.0,
+    "ast_hash": "9343916dd1d5a6ec7d34623f1774b06c",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/git_template/hooks/pre-push": {
+    "mtime": 1781231161.0,
+    "ast_hash": "4c515959b1f55559660d5aac43ae05ca",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/git_template/hooks/post-merge": {
+    "mtime": 1781231161.0,
+    "ast_hash": "bc9ae5d177435b0cbbe648b4cfd5144c",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/git_template/hooks/pre-commit": {
+    "mtime": 1781231161.0,
+    "ast_hash": "768a822943eb0a4d96846dc3783f0744",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/bin/git-ca": {
+    "mtime": 1781231161.0,
+    "ast_hash": "1fb3c8413b50e64a75b743f1f23e65ff",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/bin/git-create-branch": {
+    "mtime": 1781231161.0,
+    "ast_hash": "b857493ba2247cfee7f175e2c22c9912",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/bin/git-current-branch": {
+    "mtime": 1781231161.0,
+    "ast_hash": "ade874a14beb5c9aa51f71fc35bb831d",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/bin/git-delete-branch": {
+    "mtime": 1781231161.0,
+    "ast_hash": "d7c8dbf2fe9b1855df030d884b3206cd",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/bin/git-merge-branch": {
+    "mtime": 1781231161.0,
+    "ast_hash": "e80faf1103f68128fc6a93a33db329cb",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/bin/git-trust-bin": {
+    "mtime": 1781231161.0,
+    "ast_hash": "edd4263cad3462116cf38baef3765426",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/bin/git-ctags": {
+    "mtime": 1781231161.0,
+    "ast_hash": "a8ac8693b6a6962c6e7da3aaf887eb6b",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/bin/git-rename-branch": {
+    "mtime": 1781231161.0,
+    "ast_hash": "a9949e81388e62e6ad95f5a0e028a05f",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/bin/replace": {
+    "mtime": 1781231161.0,
+    "ast_hash": "1cb3a83fa89c2517f401fa47361d025a",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/bin/git-up": {
+    "mtime": 1781231161.0,
+    "ast_hash": "47a6c269186c7355f225bcfcb6df370e",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/bin/git-co-pr": {
+    "mtime": 1781231161.0,
+    "ast_hash": "b1082e2468fd0f323162de7a40c912c2",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/hooks/post-up": {
+    "mtime": 1781231161.0,
+    "ast_hash": "9f97d9b4166b525f3a2ed002dd1dc1a6",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/CODE_OF_CONDUCT.md": {
+    "mtime": 1781231161.0,
+    "ast_hash": "a1b52b0c691eda19035574ba85417113",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/dotfiles-canvas.html": {
+    "mtime": 1781231754.327455,
+    "ast_hash": "ff8802f6a016df0986766f488d39d273",
+    "semantic_hash": ""
+  },
+  "/Users/zero/dotfiles-template/README.md": {
+    "mtime": 1781231536.1354632,
+    "ast_hash": "18e3bbd48fd8ab500f1ab3f59f13af28",
+    "semantic_hash": ""
+  }
+}

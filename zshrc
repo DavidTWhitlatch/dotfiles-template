@@ -107,7 +107,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git z github history macos npm lol zsh-autosuggestions)
+plugins=(git z github history npm lol zsh-autosuggestions)
+[[ "$OSTYPE" == darwin* ]] && plugins+=(macos)
 # pip pyenv pylint python sublime
 ZSH_DISABLE_COMPFIX=true
 source $ZSH/oh-my-zsh.sh
@@ -161,18 +162,33 @@ export PYENV_ROOT="$HOME/.pyenv"
 command -v pyenv >/dev/null || PATH="$PYENV_ROOT/bin:$PATH"
 command -v pyenv >/dev/null && eval "$(pyenv init -)"
 
-# zsh-syntax-highlighting — portable across Intel/Apple-Silicon brew prefixes; skip if absent
-_zsh_syntax_hl="$(brew --prefix 2>/dev/null)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
-[ -f "$_zsh_syntax_hl" ] && source "$_zsh_syntax_hl"
+# zsh-syntax-highlighting — try brew (any prefix), then distro paths; skip if absent
+for _zsh_syntax_hl in \
+  "$(brew --prefix 2>/dev/null)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh" \
+  /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh \
+  /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh; do
+  if [ -f "$_zsh_syntax_hl" ]; then
+    source "$_zsh_syntax_hl"
+    break
+  fi
+done
 unset _zsh_syntax_hl
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
 
-# Prompt: oh-my-posh (skip cleanly if not installed)
+# Prompt: oh-my-posh (skip cleanly if not installed; default theme if the
+# powerlevel10k_rainbow theme file isn't where this install keeps themes)
 if command -v oh-my-posh >/dev/null; then
-  eval "$(oh-my-posh init zsh --config "$(brew --prefix oh-my-posh)/themes/powerlevel10k_rainbow.omp.json")"
+  _posh_theme="$(brew --prefix oh-my-posh 2>/dev/null)/themes/powerlevel10k_rainbow.omp.json"
+  [ -f "$_posh_theme" ] || _posh_theme="${POSH_THEMES_PATH:-$HOME/.cache/oh-my-posh/themes}/powerlevel10k_rainbow.omp.json"
+  if [ -f "$_posh_theme" ]; then
+    eval "$(oh-my-posh init zsh --config "$_posh_theme")"
+  else
+    eval "$(oh-my-posh init zsh)"
+  fi
+  unset _posh_theme
 fi
 
 # Launch herdr on interactive terminal startup (replaces the old tmux autostart).
